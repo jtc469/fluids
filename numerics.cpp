@@ -39,6 +39,42 @@ void set_bnd(int b, std::vector<float>& x, int N) {
     x[IX(N + 1, N + 1, N)] = 0.5f * (x[IX(N, N + 1, N)] + x[IX(N + 1, N, N)]);
 }
 
+
+
+/*
+lin_solve: 12 step fast linear-system approximate for a vector<float> x
+    x = (x0 + a*(neighbors)) / c;
+
+Diffusion: a = dt*diff*N*N, c = 1 + 4*a
+    because we have 4 neighbors, and the diffusion rate is scaled by dt and grid size
+    ρ - (dt*diff*N*N)(ρ_neighbours) = ρ0
+    => ρ = (ρ0 + (dt*diff*N*N)(ρ_neighbours)) / (1 + 4*dt*diff*N*N)
+
+Projection: 
+    a = 1, c = 4
+    ρ - (1/4)(ρ_neighbours) = div
+    => ρ = (div + (1/4)(ρ_neighbours)) / 1
+*/
+
+
+void lin_solve(int b, std::vector<float>& x, const std::vector<float>& x0, float a, float c, int N, int iters) {
+    for (int it = 0; it < iters; it++) {
+        for (int j = 1; j <= N; j++) {
+            for (int i = 1; i <= N; i++) {
+                x[IX(i, j, N)] =
+                    (x0[IX(i, j, N)] +
+                     a * (x[IX(i - 1, j, N)] + x[IX(i + 1, j, N)] +
+                          x[IX(i, j - 1, N)] + x[IX(i, j + 1, N)])) / c;
+            }
+        }
+        set_bnd(b, x, N);
+    }
+}
+
+
+/*
+// Optional lin_solve2 method, a FISHPAK equivilant as referenced in the paper 
+
 static void solve_tridiagonal(const std::vector<float>& lower,
                               const std::vector<float>& diag,
                               const std::vector<float>& upper,
@@ -63,14 +99,7 @@ static void solve_tridiagonal(const std::vector<float>& lower,
     }
 }
 
-/*
-lin_solve2: direct separable Helmholtz solver (FISHPAK-style equivalent)
 
-Solves interior equation:
-    c*x(i,j) - a*(x(i-1,j)+x(i+1,j)+x(i,j-1)+x(i,j+1)) = x0(i,j)
-
-This is a direct solve for the interior grid and then applies set_bnd() boundary handling.
-*/
 void lin_solve2(int b, std::vector<float>& x, const std::vector<float>& x0,
                 float a, float c, int N) {
     if (N <= 0) return;
@@ -136,35 +165,4 @@ void lin_solve2(int b, std::vector<float>& x, const std::vector<float>& x0,
     set_bnd(b, x, N);
 }
 
-
-
-/*
-lin_solve: 12 step fast linear-system approximate for a vector<float> x
-    x = (x0 + a*(neighbors)) / c;
-
-Diffusion: a = dt*diff*N*N, c = 1 + 4*a
-    because we have 4 neighbors, and the diffusion rate is scaled by dt and grid size
-    ρ - (dt*diff*N*N)(ρ_neighbours) = ρ0
-    => ρ = (ρ0 + (dt*diff*N*N)(ρ_neighbours)) / (1 + 4*dt*diff*N*N)
-
-Projection: 
-    a = 1, c = 4
-    ρ - (1/4)(ρ_neighbours) = div
-    => ρ = (div + (1/4)(ρ_neighbours)) / 1
-
 */
-void lin_solve(int b, std::vector<float>& x, const std::vector<float>& x0,
-               float a, float c, int N) {
-    for (int it = 0; it < 12; it++) {
-        for (int j = 1; j <= N; j++) {
-            for (int i = 1; i <= N; i++) {
-                x[IX(i, j, N)] =
-                    (x0[IX(i, j, N)] +
-                     a * (x[IX(i - 1, j, N)] + x[IX(i + 1, j, N)] +
-                          x[IX(i, j - 1, N)] + x[IX(i, j + 1, N)])) / c;
-            }
-        }
-        set_bnd(b, x, N);
-    }
-}
-

@@ -21,21 +21,12 @@ static void write_f32_block(std::ofstream& out, const std::vector<float>& a) {
 static inline int IX(int i, int j, int N) { return i + (N + 2) * j; }
 
 
-// Stable Fluids Methods //
-static void addForce(std::vector<float>& x, const std::vector<float>& f, float dt) {
-    if (x.size() != f.size()) return;
-
-    #pragma omp parallel for schedule(static)
-    for (size_t i = 0; i < x.size(); i++){
-        x[i] += dt * f[i];
-    } 
-}
-
+// 'Diffuse' x by a factor of a
 // a = (diff * N^2) * dt
 static void diffuse(int b, std::vector<float>& x, const std::vector<float>& x0, float diff, float dt, int N) {
     float a = dt * diff * N * N;
     x = x0;
-    lin_solve2(b, x, x0, a, 1.0f + 4.0f * a, N);
+    lin_solve(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
 }
 
 
@@ -114,7 +105,7 @@ static void project(std::vector<float>& u, std::vector<float>& v, std::vector<fl
     set_bnd(0, div, N);
     set_bnd(0, p, N);
 
-    lin_solve2(0, p, div, 1.0f, 4.0f, N);
+    lin_solve(0, p, div, 1.0f, 4.0f, N, 24);
 
     #pragma omp parallel for schedule(static)
     for (int j = 1; j <= N; j++) {
@@ -148,9 +139,6 @@ struct Fluid {
         v0.assign(sz, 0.0f);
         dens.assign(sz, 0.0f);
         dens0.assign(sz, 0.0f);
-        fx.assign(sz, 0.0f);
-        fy.assign(sz, 0.0f);
-        src.assign(sz, 0.0f);
         p.assign(sz, 0.0f);
         div.assign(sz, 0.0f);
     }
@@ -168,8 +156,6 @@ struct Fluid {
     }
 
     void Vstep() {
-        addForce(u, fx, dt);
-        addForce(v, fy, dt);
 
         diffuse(1, u0, u, visc, dt, N);
         diffuse(2, v0, v, visc, dt, N);
@@ -179,18 +165,14 @@ struct Fluid {
         transport(2, v, v0, u0, v0, dt, N);
         project(u, v, p, div, N);
 
-        std::fill(fx.begin(), fx.end(), 0.0f);
-        std::fill(fy.begin(), fy.end(), 0.0f);
     }
 
     void Sstep() {
-        addForce(dens, src, dt);
 
         diffuse(0, dens0, dens, diff, dt, N);
         transport(0, dens, dens0, u, v, dt, N);
         dissipate(dens, diss, dt, N);
 
-        std::fill(src.begin(), src.end(), 0.0f);
     }
 
     void step() {

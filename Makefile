@@ -18,7 +18,7 @@ $(TARGET): $(OBJS)
 
 run: $(TARGET)
 	./$(TARGET) $(ARGS)
-	python3 render.py --out recent.gif --cmap Blues_r
+	python3 render.py --out recent.gif --fps 120 --cmap Blues_r
 
 clean:
 	rm -f $(TARGET) $(OBJS)
