@@ -46,8 +46,7 @@ lin_solve: fast linear-system approximate for a vector<float> x
 x = (x0 + a * neighbors) / c
 4 neighbors, a is scaled by dt and grid size
 */
-void lin_solve(int b, std::vector<float>& x, const std::vector<float>& x0,
-               float a, float c, int N, int iters) {
+void lin_solve(int b, std::vector<float>& x, const std::vector<float>& x0, float a, float c, int N, int iters) {
     const float eps = 1e-3f;
 
     for (int it = 0; it < iters; it++) {

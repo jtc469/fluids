@@ -1,1 +1,6 @@
-sims/colors/
+build/
+sims/
+__pycache__/
+*.o
+*.bin
+*.gif
