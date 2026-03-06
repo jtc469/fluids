@@ -58,6 +58,42 @@ make run ARGS="128 100 1e-6 1e-6 2e-2"
 3. `visc` (kinematic viscosity)
 4. `diff` (density diffusivity)
 5. `diss` (dissipation)
+6. `lin_solve_iters` (optional, default `24`)
+7. `solver_id` (optional: `0=lin_solve0`, `1=lin_solve1`, `3=lin_solve3`, `4=lin_solve4-experimental`; default `3`)
+
+Performance build profiles:
+
+```bash
+make native
+make release
+make debug
+```
+
+MPI build and run (throughput scaling via one simulation per rank):
+
+```bash
+make mpi
+make sim-mpi NP=4 ARGS="1024 200 1e-6 1e-6 2e-2 24 4"
+```
+
+GPU offload build and run (OpenMP target):
+
+```bash
+make gpu
+make sim-gpu ARGS="2048 80 1e-6 1e-6 2e-2 24 4"
+```
+
+If your toolchain supports a specific GPU target, pass offload flags, for example:
+
+```bash
+make gpu GPU_CXX=clang++ GPU_OFFLOAD_FLAGS="-fopenmp-targets=nvptx64-nvidia-cuda"
+```
+
+OpenMP runtime knobs (used by `make run` and `make sim`):
+
+```bash
+make run OMP_NUM_THREADS=8 OMP_PROC_BIND=close OMP_PLACES=cores ARGS="512 200 1e-6 1e-6 2e-2 24"
+```
 
 Render only from existing binary output:
 
