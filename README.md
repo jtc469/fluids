@@ -70,6 +70,8 @@ Output files:
 1. Raw frames: `build/density.bin`
 2. GIF: `sims/recent.gif`
 
+## Solver Steps
+
 ### 1) Diffusion
 
 Diffusion solves:
