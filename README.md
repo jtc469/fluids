@@ -76,7 +76,7 @@ Output files:
 
 Diffusion solves:
 
-`dphi/dt = nu * nabla^2(phi)`
+$$ \frac{d\phi}{dt} = \nu \cdot \nabla^2(\phi)$$
 
 for either velocity components or density. After implicit time discretisation, this becomes a linear system solved by `lin_solve0` (Gauss-Siedel style), or `lin_solve1` (Jacobi). In code, this appears as:
 
