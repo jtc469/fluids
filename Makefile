@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++17 -O2 -fopenmp -Iinclude
+CXXFLAGS := -std=c++17 -O3 -fopenmp -march=native -ffast-math
 LDFLAGS := -fopenmp
 
 BUILD_DIR := build
@@ -28,7 +28,7 @@ $(BUILD_DIR):
 
 sim: $(TARGET)
 	./$(TARGET) $(ARGS)
-	
+
 run: $(TARGET)
 	./$(TARGET) $(ARGS)
 	python3 $(SRC_DIR)/render.py --out recent.gif --fps 60 --cmap Blues_r
