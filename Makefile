@@ -28,10 +28,10 @@ $(BUILD_DIR):
 
 run: $(TARGET)
 	./$(TARGET) $(ARGS)
-	python3 $(SRC_DIR)/render.py --out recent.gif --fps 120 --cmap Blues_r
+	python3 $(SRC_DIR)/render.py --out recent.gif --fps 60 --cmap Blues_r
 
 render:
-	python3 $(SRC_DIR)/render.py --out recent.gif --fps 120 --cmap Blues_r
+	python3 $(SRC_DIR)/render.py --out recent.gif --fps 60 --cmap Blues_r
 
 clean:
 	rm -f $(TARGET) $(OBJS) $(BUILD_DIR)/density.bin

@@ -42,11 +42,11 @@ void set_bnd(int b, std::vector<float>& x, int N) {
 
 
 /*
-lin_solve: fast linear-system approximate for a vector<float> x
+lin_solve0: fast linear-system approximate for a vector<float> x
 x = (x0 + a * neighbors) / c
 4 neighbors, a is scaled by dt and grid size
 */
-void lin_solve(int b, std::vector<float>& x, const std::vector<float>& x0, float a, float c, int N, int iters) {
+void lin_solve0(int b, std::vector<float>& x, const std::vector<float>& x0, float a, float c, int N, int iters) {
     const float eps = 1e-3f;
 
     for (int it = 0; it < iters; it++) {
@@ -77,97 +77,38 @@ void lin_solve(int b, std::vector<float>& x, const std::vector<float>& x0, float
 }
 
 
-/*
-// Optional lin_solve2 method, a FISHPAK equivilant as referenced in the paper 
 
-static void solve_tridiagonal(const std::vector<float>& lower,
-                              const std::vector<float>& diag,
-                              const std::vector<float>& upper,
-                              const std::vector<float>& rhs,
-                              std::vector<float>& out,
-                              int N) {
-    std::vector<float> cprime(N + 1, 0.0f);
-    std::vector<float> dprime(N + 1, 0.0f);
+// lin_solve1 a parallelised solver  
+void lin_solve1(int b, std::vector<float>& x, const std::vector<float>& x0,
+                float a, float c, int N, int iters) {
+    const float eps = 1e-3f;
+    std::vector<float> x_new = x;
 
-    cprime[1] = upper[1] / diag[1];
-    dprime[1] = rhs[1] / diag[1];
+    for (int it = 0; it < iters; it++) {
+        float max_delta = 0.0f;
 
-    for (int i = 2; i <= N; i++) {
-        float denom = diag[i] - lower[i] * cprime[i - 1];
-        cprime[i] = (i < N) ? (upper[i] / denom) : 0.0f;
-        dprime[i] = (rhs[i] - lower[i] * dprime[i - 1]) / denom;
-    }
+        #pragma omp parallel for reduction(max:max_delta) schedule(static)
+        for (int j = 1; j <= N; j++) {
+            for (int i = 1; i <= N; i++) {
+                int id = IX(i, j, N);
 
-    out[N] = dprime[N];
-    for (int i = N - 1; i >= 1; i--) {
-        out[i] = dprime[i] - cprime[i] * out[i + 1];
+                float upd =
+                    (x0[id] +
+                     a * (x[IX(i - 1, j, N)] + x[IX(i + 1, j, N)] +
+                          x[IX(i, j - 1, N)] + x[IX(i, j + 1, N)])) / c;
+
+                float delta = std::abs(upd - x[id]);
+                if (delta > max_delta) max_delta = delta;
+
+                x_new[id] = upd;
+            }
+        }
+
+        x.swap(x_new);
+        set_bnd(b, x, N);
+
+        if (max_delta < eps) {
+            break;
+        }
     }
 }
-
-
-void lin_solve2(int b, std::vector<float>& x, const std::vector<float>& x0,
-                float a, float c, int N) {
-    if (N <= 0) return;
-
-    const float inv_norm = 2.0f / (N + 1.0f);
-    const float pi = 3.14159265f;
-
-    std::vector<float> sin_table((N + 1) * (N + 1), 0.0f);
-    for (int k = 1; k <= N; k++) {
-        for (int j = 1; j <= N; j++) {
-            sin_table[k * (N + 1) + j] = std::sin(pi * k * j / (N + 1.0f));
-        }
-    }
-
-    std::vector<float> rhs_hat((N + 2) * (N + 2), 0.0f);
-    for (int i = 1; i <= N; i++) {
-        for (int k = 1; k <= N; k++) {
-            float acc = 0.0f;
-            for (int j = 1; j <= N; j++) {
-                acc += x0[IX(i, j, N)] * sin_table[k * (N + 1) + j];
-            }
-            rhs_hat[IX(i, k, N)] = acc;
-        }
-    }
-
-    std::vector<float> u_hat((N + 2) * (N + 2), 0.0f);
-    std::vector<float> lower(N + 1, 0.0f);
-    std::vector<float> diag(N + 1, 0.0f);
-    std::vector<float> upper(N + 1, 0.0f);
-    std::vector<float> rhs_line(N + 1, 0.0f);
-    std::vector<float> sol_line(N + 1, 0.0f);
-
-    for (int k = 1; k <= N; k++) {
-        float lambda_y = 2.0f * std::cos(pi * k / (N + 1.0f));
-        float d = c - a * lambda_y;
-
-        for (int i = 1; i <= N; i++) {
-            lower[i] = -a;
-            diag[i] = d;
-            upper[i] = -a;
-            rhs_line[i] = rhs_hat[IX(i, k, N)];
-        }
-        lower[1] = 0.0f;
-        upper[N] = 0.0f;
-
-        solve_tridiagonal(lower, diag, upper, rhs_line, sol_line, N);
-
-        for (int i = 1; i <= N; i++) {
-            u_hat[IX(i, k, N)] = sol_line[i];
-        }
-    }
-
-    for (int i = 1; i <= N; i++) {
-        for (int j = 1; j <= N; j++) {
-            float acc = 0.0f;
-            for (int k = 1; k <= N; k++) {
-                acc += u_hat[IX(i, k, N)] * sin_table[k * (N + 1) + j];
-            }
-            x[IX(i, j, N)] = inv_norm * acc;
-        }
-    }
-
-    set_bnd(b, x, N);
-}
-
-*/

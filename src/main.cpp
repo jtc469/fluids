@@ -20,13 +20,23 @@ static void write_f32_block(std::ofstream& out, const std::vector<float>& a) {
 // Index flattener with ghost region
 static inline int IX(int i, int j, int N) { return i + (N + 2) * j; }
 
+enum class LinSolver {
+    Solve0,
+    Solve1
+};
 
 // 'Diffuse' x by a factor of a
 // a = (diff * N^2) * dt
-static void diffuse(int b, std::vector<float>& x, const std::vector<float>& x0, float diff, float dt, int N) {
+static void diffuse(int b, std::vector<float>& x, const std::vector<float>& x0,
+                    float diff, float dt, int N, LinSolver solver) {
     float a = dt * diff * N * N;
     x = x0;
-    lin_solve(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
+
+    if (solver == LinSolver::Solve0) {
+        lin_solve0(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
+    } else {
+        lin_solve1(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
+    }
 }
 
 
@@ -90,7 +100,7 @@ static void dissipate(std::vector<float>& x, float a, float dt, int N) {
     set_bnd(0, x, N);
 }
 
-static void project(std::vector<float>& u, std::vector<float>& v, std::vector<float>& p, std::vector<float>& div, int N) {
+static void project(std::vector<float>& u, std::vector<float>& v, std::vector<float>& p, std::vector<float>& div, int N, LinSolver solver) {
     float h = 1.0f / N;
 
     #pragma omp parallel for schedule(static)
@@ -105,7 +115,11 @@ static void project(std::vector<float>& u, std::vector<float>& v, std::vector<fl
     set_bnd(0, div, N);
     set_bnd(0, p, N);
 
-    lin_solve(0, p, div, 1.0f, 4.0f, N, 24);
+    if (solver == LinSolver::Solve0) {
+        lin_solve0(0, p, div, 1.0f, 4.0f, N, 24);
+    } else {
+        lin_solve1(0, p, div, 1.0f, 4.0f, N, 24);
+    }
 
     #pragma omp parallel for schedule(static)
     for (int j = 1; j <= N; j++) {
@@ -120,17 +134,18 @@ static void project(std::vector<float>& u, std::vector<float>& v, std::vector<fl
 
 struct Fluid {
     int N;
+    int lin_solve_iters;
     float dt;
     float visc;
     float diff;
     float diss;
+    LinSolver solver;
 
     std::vector<float> u, v, u0, v0;
     std::vector<float> dens, dens0;
     std::vector<float> p, div;
 
-    Fluid(int n, float dt_, float visc_, float diff_, float diss_)
-        : N(n), dt(dt_), visc(visc_), diff(diff_), diss(diss_) {
+    Fluid(int n, float dt_, float visc_, float diff_, float diss_, LinSolver solver_): N(n), dt(dt_), visc(visc_), diff(diff_), diss(diss_), solver(solver_) {
         int sz = (N + 2) * (N + 2);
         u.assign(sz, 0.0f);
         v.assign(sz, 0.0f);
@@ -156,19 +171,19 @@ struct Fluid {
 
     void Vstep() {
 
-        diffuse(1, u0, u, visc, dt, N);
-        diffuse(2, v0, v, visc, dt, N);
-        project(u0, v0, p, div, N);
+        diffuse(1, u0, u, visc, dt, N, solver);
+        diffuse(2, v0, v, visc, dt, N, solver);
+        project(u0, v0, p, div, N, solver);
 
         transport(1, u, u0, u0, v0, dt, N);
         transport(2, v, v0, u0, v0, dt, N);
-        project(u, v, p, div, N);
+        project(u, v, p, div, N, solver);
 
     }
 
     void Sstep() {
 
-        diffuse(0, dens0, dens, diff, dt, N);
+        diffuse(0, dens0, dens, diff, dt, N, solver);
         transport(0, dens, dens0, u, v, dt, N);
         dissipate(dens, diss, dt, N);
 
@@ -183,23 +198,28 @@ struct Fluid {
 int main(int argc, char** argv) {
     int N = 128;
     int steps = 300;
-    int write_every = 1;
-    int inject_steps = 50;
+    int write_every = 4;
+    int inject_steps = (int)steps*3/4;
+    int lin_solve_iters = 24;
+    LinSolver solver = LinSolver::Solve1;
 
     /*
         FLUID PARAMETERS
         viscosity=1e-4f, diffusivity=1e-4f, dissipation=1.0f
     */
     float dt = 0.1f;
-    float visc = 1e-4f; // 1e-4f
-    float diff = 1e-4f; // 1e-4f
-    float diss = 0.2f; // 0.0f
+    float visc = 1e-6f; // 1e-4f
+    float diff = 1e-6f; // 1e-4f
+    float diss = 0.0f; // 0.0f
 
     if (argc >= 2) N = std::max(16, std::atoi(argv[1]));
     if (argc >= 3) steps = std::max(1, std::atoi(argv[2]));
-    if (argc >= 4) write_every = std::max(1, std::atoi(argv[3]));   
 
-    Fluid fluid(N, dt, visc, diff, diss);
+    if (argc >= 4) visc = std::atof(argv[3]);
+    if (argc >= 5) diff = std::atof(argv[4]);
+    if (argc >= 6) diss = std::atof(argv[5]);
+
+    Fluid fluid(N, dt, visc, diff, diss, solver);
 
     auto start = std::chrono::steady_clock::now();
 
@@ -216,10 +236,10 @@ int main(int argc, char** argv) {
     for (int t = 0; t < steps; t++) {
 
         if (t < inject_steps) {
-            int start_x = N / 4;
+            int start_x = N / 2;
             
             int start_y = N / 6;
-            float sigma = 1.6f; // source softness radius (larger = smoother/wider injector)
+            float sigma = 1.6; // source softness radius (larger = smoother/wider injector)
             float inv_two_sigma2 = 1.0f / (2.0f * sigma * sigma);
 
             for (int j = -spawn_size; j <= spawn_size; j++) {
@@ -227,10 +247,8 @@ int main(int argc, char** argv) {
                     float r2 = (float)(i * i + j * j);
                     float w = std::exp(-r2 * inv_two_sigma2); // gaussian falloff from source center
 
-                    for (int s : {1, 3}){
-                        fluid.addDensity(s*start_x + i, start_y + j, 10.0f * w);
-                        fluid.addVelocity(s*start_x + i, start_y + j, 0.0f * w, 5.0f * w);
-                    }
+                    fluid.addDensity(start_x + i, start_y + j, 0.1f * w);
+                    fluid.addVelocity(start_x + i, start_y + j, 0.0f * w, 5.0f * w);
                 }
             }
         }
