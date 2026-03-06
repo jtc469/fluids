@@ -210,7 +210,7 @@ int main(int argc, char** argv) {
     float dt = 0.1f;
     float visc = 1e-6f; // 1e-4f
     float diff = 1e-6f; // 1e-4f
-    float diss = 0.0f; // 0.0f
+    float diss = 0.02f; // 0.02f
 
     if (argc >= 2) N = std::max(16, std::atoi(argv[1]));
     if (argc >= 3) steps = std::max(1, std::atoi(argv[2]));
@@ -236,7 +236,7 @@ int main(int argc, char** argv) {
     for (int t = 0; t < steps; t++) {
 
         if (t < inject_steps) {
-            int start_x = N / 2;
+            int start_x = N / 4;
             
             int start_y = N / 6;
             float sigma = 1.6; // source softness radius (larger = smoother/wider injector)
@@ -247,9 +247,10 @@ int main(int argc, char** argv) {
                     float r2 = (float)(i * i + j * j);
                     float w = std::exp(-r2 * inv_two_sigma2); // gaussian falloff from source center
 
-                    fluid.addDensity(start_x + i, start_y + j, 0.1f * w);
-                    fluid.addVelocity(start_x + i, start_y + j, 0.0f * w, 5.0f * w);
-                }
+                    for (int k : {1, 2, 3, 4}){
+                        fluid.addDensity(k*start_x + i, start_y + j, 0.1f * w);
+                        fluid.addVelocity(k*start_x + i, start_y + j, 2.0f * w, 5.0f * w);
+                }   }
             }
         }
 

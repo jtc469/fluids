@@ -26,6 +26,9 @@ $(BUILD_DIR)/numerics.o: $(SRC_DIR)/numerics.cpp $(INC_DIR)/numerics.h | $(BUILD
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
 
+sim: $(TARGET)
+	./$(TARGET) $(ARGS)
+	
 run: $(TARGET)
 	./$(TARGET) $(ARGS)
 	python3 $(SRC_DIR)/render.py --out recent.gif --fps 60 --cmap Blues_r

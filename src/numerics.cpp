@@ -32,11 +32,6 @@ void set_bnd(int b, std::vector<float>& x, int N) {
             x[IX(i, N + 1, N)] = x[IX(i, N, N)];
         }
     }
-
-    x[IX(0, 0, N)] = 0.5f * (x[IX(1, 0, N)] + x[IX(0, 1, N)]);
-    x[IX(0, N + 1, N)] = 0.5f * (x[IX(1, N + 1, N)] + x[IX(0, N, N)]);
-    x[IX(N + 1, 0, N)] = 0.5f * (x[IX(N, 0, N)] + x[IX(N + 1, 1, N)]);
-    x[IX(N + 1, N + 1, N)] = 0.5f * (x[IX(N, N + 1, N)] + x[IX(N + 1, N, N)]);
 }
 
 
@@ -75,8 +70,6 @@ void lin_solve0(int b, std::vector<float>& x, const std::vector<float>& x0, floa
         }
     }
 }
-
-
 
 // lin_solve1 a parallelised solver  
 void lin_solve1(int b, std::vector<float>& x, const std::vector<float>& x0,
