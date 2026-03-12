@@ -72,18 +72,22 @@ static float sample_bilinear(const std::vector<float>& d0, float x, float y, int
 // Trace each cell backwards, copy value that cell at that previous position.
 static void transport(int b, std::vector<float>& d, const std::vector<float>& d0, const std::vector<float>& u, const std::vector<float>& v, float dt, int N) {
     float dt0 = dt * N; // scale timestep by resolution
-    #pragma omp parallel for schedule(static)
-    for (int j = 1; j <= N; j++) {
-        for (int i = 1; i <= N; i++) {
-            int id = IX(i, j, N);
+    #pragma omp parallel
+    {
+        #pragma omp for schedule(static)
+        for (int j = 1; j <= N; j++) {
+            for (int i = 1; i <= N; i++) {
+                int id = IX(i, j, N);
 
-            // where did density at (i,j) come from dt ago?
-            float x = (float)i - dt0 * u[id]; 
-            float y = (float)j - dt0 * v[id];
-            d[id] = sample_bilinear(d0, x, y, N); // smoother backtrace sample
+                // where did density at (i,j) come from dt ago?
+                float x = (float)i - dt0 * u[id];
+                float y = (float)j - dt0 * v[id];
+                d[id] = sample_bilinear(d0, x, y, N); // smoother backtrace sample
+            }
         }
+
+        set_bnd(b, d, N);
     }
-    set_bnd(b, d, N);
 }
 
 // decay x by 1 + a *dt
@@ -91,29 +95,37 @@ static void dissipate(std::vector<float>& x, float a, float dt, int N) {
     if (a <= 0.0f) return;
     float D = 1.0f + a * dt;
 
-    #pragma omp parallel for schedule(static)
-    for (int j = 1; j <= N; j++) {
-        for (int i = 1; i <= N; i++) {
-            x[IX(i, j, N)] /= D;
+    #pragma omp parallel
+    {
+        #pragma omp for schedule(static)
+        for (int j = 1; j <= N; j++) {
+            for (int i = 1; i <= N; i++) {
+                x[IX(i, j, N)] /= D;
+            }
         }
+
+        set_bnd(0, x, N);
     }
-    set_bnd(0, x, N);
 }
 
 static void project(std::vector<float>& u, std::vector<float>& v, std::vector<float>& p, std::vector<float>& div, int N, LinSolver solver) {
     float h = 1.0f / N;
 
-    #pragma omp parallel for schedule(static)
-    for (int j = 1; j <= N; j++) {
-        for (int i = 1; i <= N; i++) {
-            div[IX(i, j, N)] = -0.5f * h *
-                               (u[IX(i + 1, j, N)] - u[IX(i - 1, j, N)] +
-                                v[IX(i, j + 1, N)] - v[IX(i, j - 1, N)]);
-            p[IX(i, j, N)] = 0.0f;
+    #pragma omp parallel
+    {
+        #pragma omp for schedule(static)
+        for (int j = 1; j <= N; j++) {
+            for (int i = 1; i <= N; i++) {
+                div[IX(i, j, N)] = -0.5f * h *
+                                   (u[IX(i + 1, j, N)] - u[IX(i - 1, j, N)] +
+                                    v[IX(i, j + 1, N)] - v[IX(i, j - 1, N)]);
+                p[IX(i, j, N)] = 0.0f;
+            }
         }
+
+        set_bnd(0, div, N);
+        set_bnd(0, p, N);
     }
-    set_bnd(0, div, N);
-    set_bnd(0, p, N);
 
     if (solver == LinSolver::Solve0) {
         lin_solve0(0, p, div, 1.0f, 4.0f, N, 24);
@@ -121,15 +133,19 @@ static void project(std::vector<float>& u, std::vector<float>& v, std::vector<fl
         lin_solve1(0, p, div, 1.0f, 4.0f, N, 24);
     }
 
-    #pragma omp parallel for schedule(static)
-    for (int j = 1; j <= N; j++) {
-        for (int i = 1; i <= N; i++) {
-            u[IX(i, j, N)] -= 0.5f * (p[IX(i + 1, j, N)] - p[IX(i - 1, j, N)]) / h;
-            v[IX(i, j, N)] -= 0.5f * (p[IX(i, j + 1, N)] - p[IX(i, j - 1, N)]) / h;
+    #pragma omp parallel
+    {
+        #pragma omp for schedule(static)
+        for (int j = 1; j <= N; j++) {
+            for (int i = 1; i <= N; i++) {
+                u[IX(i, j, N)] -= 0.5f * (p[IX(i + 1, j, N)] - p[IX(i - 1, j, N)]) / h;
+                v[IX(i, j, N)] -= 0.5f * (p[IX(i, j + 1, N)] - p[IX(i, j - 1, N)]) / h;
+            }
         }
+
+        set_bnd(1, u, N);
+        set_bnd(2, v, N);
     }
-    set_bnd(1, u, N);
-    set_bnd(2, v, N);
 }
 
 struct Fluid {

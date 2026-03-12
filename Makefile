@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS = -std=c++17 -O2 -I$(INC_DIR)
+CXXFLAGS = -std=c++17 -O3 -g -fno-omit-frame-pointer -fopenmp -I$(INC_DIR)
 LDFLAGS := -fopenmp
 
 BUILD_DIR := build
