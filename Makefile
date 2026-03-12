@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++17 -O3 -fopenmp -march=native -ffast-math
+CXXFLAGS = -std=c++17 -O2 -I$(INC_DIR)
 LDFLAGS := -fopenmp
 
 BUILD_DIR := build
