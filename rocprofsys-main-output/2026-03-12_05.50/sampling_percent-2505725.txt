@@ -1,0 +1,23 @@
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                             PERCENTAGE OF SAMPLES                                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                          LABEL                                                           | COUNT | DEPTH |      METRIC      | UNITS |  SUM   |
+|--------------------------------------------------------------------------------------------------------------------------|-------|-------|------------------|-------|--------|
+| |0>>> __libc_start_main                                                                                                  |  3780 |     0 | sampling_percent | %     | 13.628 |
+| |0>>> __libc_init_first                                                                                                  |  3780 |     0 | sampling_percent | %     | 13.628 |
+| |0>>> rocprofsys_init                                                                                                    |  3780 |     0 | sampling_percent | %     | 13.628 |
+| |0>>> main                                                                                                               |  3780 |     0 | sampling_percent | %     | 13.628 |
+| |0>>> project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::vector<f... |  1138 |     0 | sampling_percent | %     |  4.103 |
+| |0>>> lin_solve1(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&,... |  2294 |     0 | sampling_percent | %     |  8.271 |
+| |0>>> GOMP_parallel                                                                                                      |  2075 |     0 | sampling_percent | %     |  7.481 |
+| |0>>> omp_fulfill_event                                                                                                  |  3283 |     0 | sampling_percent | %     | 11.836 |
+| |0>>> __sigaction                                                                                                        |  3780 |     0 | sampling_percent | %     | 13.628 |
+| |0>>> diffuse(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&, fl... |     5 |     0 | sampling_percent | %     |  0.018 |
+| |0>>> std::ostream::write(char const*, long)                                                                             |    14 |     0 | sampling_percent | %     |  0.050 |
+| |0>>> std::basic_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)                                       |    14 |     0 | sampling_percent | %     |  0.050 |
+| |0>>> std::__basic_file<char>::xsputn_2(char const*, long, char const*, long)                                            |    14 |     0 | sampling_percent | %     |  0.050 |
+| |1>>> pthread_condattr_setpshared                                                                                        |  3727 |     0 | sampling_percent | %     | 20.000 |
+| |1>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> ... |  7454 |     0 | sampling_percent | %     | 40.000 |
+| |1>>> omp_fulfill_event                                                                                                  |  3727 |     0 | sampling_percent | %     | 20.000 |
+| |1>>> __sigaction                                                                                                        |  3727 |     0 | sampling_percent | %     | 20.000 |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

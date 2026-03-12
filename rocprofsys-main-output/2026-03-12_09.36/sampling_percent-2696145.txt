@@ -1,0 +1,101 @@
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                              PERCENTAGE OF SAMPLES                                                                            |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                          LABEL                                                           | COUNT  | DEPTH |      METRIC      | UNITS |  SUM   |
+|--------------------------------------------------------------------------------------------------------------------------|--------|-------|------------------|-------|--------|
+| |00>>> __libc_start_main                                                                                                 | 137314 |     0 | sampling_percent | %     | 12.806 |
+| |00>>> __libc_init_first                                                                                                 | 137314 |     0 | sampling_percent | %     | 12.806 |
+| |00>>> rocprofsys_init                                                                                                   | 137314 |     0 | sampling_percent | %     | 12.806 |
+| |00>>> main                                                                                                              | 137287 |     0 | sampling_percent | %     | 12.804 |
+| |00>>> project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::vector<... |  53653 |     0 | sampling_percent | %     |  5.004 |
+| |00>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... | 131967 |     0 | sampling_percent | %     | 12.308 |
+| |00>>> omp_fulfill_event                                                                                                 | 134718 |     0 | sampling_percent | %     | 12.564 |
+| |00>>> __sigaction                                                                                                       | 137314 |     0 | sampling_percent | %     | 12.806 |
+| |00>>> GOMP_parallel                                                                                                     |  65203 |     0 | sampling_percent | %     |  6.081 |
+| |00>>> diffuse(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&, f... |     47 |     0 | sampling_percent | %     |  0.004 |
+| |00>>> std::ostream::write(char const*, long)                                                                            |     31 |     0 | sampling_percent | %     |  0.003 |
+| |00>>> std::basic_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)                                      |     31 |     0 | sampling_percent | %     |  0.003 |
+| |00>>> std::__basic_file<char>::xsputn_2(char const*, long, char const*, long)                                           |     30 |     0 | sampling_percent | %     |  0.003 |
+| |00>>> std::basic_ofstream<char, std::char_traits<char> >::close()                                                       |      1 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> std::basic_filebuf<char, std::char_traits<char> >::close()                                                        |      1 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> std::__basic_file<char>::close()                                                                                  |      1 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> _IO_fclose                                                                                                        |      1 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> _IO_file_close_it                                                                                                 |      1 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> rocprofsys_set_env                                                                                                |      3 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long>(__gnu_cxx::_... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> rocprofsys_finalize                                                                                               |      2 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> std::__throw_bad_optional_access()                                                                                |      2 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> __fprintf_chk                                                                                                     |      2 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> psiginfo                                                                                                          |      2 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> _IO_file_xsputn                                                                                                   |      2 |     0 | sampling_percent | %     |  0.000 |
+| |00>>> _IO_file_write                                                                                                    |      2 |     0 | sampling_percent | %     |  0.000 |
+| |01>>> pthread_condattr_setpshared                                                                                       | 138740 |     0 | sampling_percent | %     | 20.000 |
+| |01>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 277480 |     0 | sampling_percent | %     | 40.000 |
+| |01>>> omp_fulfill_event                                                                                                 | 138731 |     0 | sampling_percent | %     | 19.999 |
+| |01>>> __sigaction                                                                                                       | 138740 |     0 | sampling_percent | %     | 20.000 |
+| |01>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |02>>> pthread_condattr_setpshared                                                                                       | 139393 |     0 | sampling_percent | %     | 20.000 |
+| |02>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278786 |     0 | sampling_percent | %     | 40.000 |
+| |02>>> omp_fulfill_event                                                                                                 | 139387 |     0 | sampling_percent | %     | 19.999 |
+| |02>>> __sigaction                                                                                                       | 139393 |     0 | sampling_percent | %     | 20.000 |
+| |02>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |03>>> pthread_condattr_setpshared                                                                                       | 137479 |     0 | sampling_percent | %     | 20.000 |
+| |03>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 274958 |     0 | sampling_percent | %     | 40.000 |
+| |03>>> omp_fulfill_event                                                                                                 | 137471 |     0 | sampling_percent | %     | 19.999 |
+| |03>>> __sigaction                                                                                                       | 137479 |     0 | sampling_percent | %     | 20.000 |
+| |04>>> pthread_condattr_setpshared                                                                                       | 139434 |     0 | sampling_percent | %     | 20.000 |
+| |04>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278868 |     0 | sampling_percent | %     | 40.000 |
+| |04>>> omp_fulfill_event                                                                                                 | 139430 |     0 | sampling_percent | %     | 20.000 |
+| |04>>> __sigaction                                                                                                       | 139434 |     0 | sampling_percent | %     | 20.000 |
+| |05>>> pthread_condattr_setpshared                                                                                       | 137696 |     0 | sampling_percent | %     | 20.000 |
+| |05>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 275392 |     0 | sampling_percent | %     | 40.001 |
+| |05>>> omp_fulfill_event                                                                                                 | 137681 |     0 | sampling_percent | %     | 19.998 |
+| |05>>> __sigaction                                                                                                       | 137696 |     0 | sampling_percent | %     | 20.000 |
+| |06>>> pthread_condattr_setpshared                                                                                       | 139083 |     0 | sampling_percent | %     | 20.000 |
+| |06>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278166 |     0 | sampling_percent | %     | 40.000 |
+| |06>>> omp_fulfill_event                                                                                                 | 139075 |     0 | sampling_percent | %     | 19.999 |
+| |06>>> __sigaction                                                                                                       | 139083 |     0 | sampling_percent | %     | 20.000 |
+| |06>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |07>>> pthread_condattr_setpshared                                                                                       | 138867 |     0 | sampling_percent | %     | 20.000 |
+| |07>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 277734 |     0 | sampling_percent | %     | 40.001 |
+| |07>>> omp_fulfill_event                                                                                                 | 138856 |     0 | sampling_percent | %     | 19.999 |
+| |07>>> __sigaction                                                                                                       | 138867 |     0 | sampling_percent | %     | 20.000 |
+| |08>>> pthread_condattr_setpshared                                                                                       | 139254 |     0 | sampling_percent | %     | 20.000 |
+| |08>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278508 |     0 | sampling_percent | %     | 40.001 |
+| |08>>> omp_fulfill_event                                                                                                 | 139244 |     0 | sampling_percent | %     | 19.999 |
+| |08>>> __sigaction                                                                                                       | 139254 |     0 | sampling_percent | %     | 20.000 |
+| |09>>> pthread_condattr_setpshared                                                                                       | 139616 |     0 | sampling_percent | %     | 20.000 |
+| |09>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 279232 |     0 | sampling_percent | %     | 40.001 |
+| |09>>> omp_fulfill_event                                                                                                 | 139603 |     0 | sampling_percent | %     | 19.998 |
+| |09>>> __sigaction                                                                                                       | 139616 |     0 | sampling_percent | %     | 20.000 |
+| |09>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |10>>> pthread_condattr_setpshared                                                                                       | 139243 |     0 | sampling_percent | %     | 20.000 |
+| |10>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278486 |     0 | sampling_percent | %     | 40.000 |
+| |10>>> omp_fulfill_event                                                                                                 | 139233 |     0 | sampling_percent | %     | 19.999 |
+| |10>>> __sigaction                                                                                                       | 139243 |     0 | sampling_percent | %     | 20.000 |
+| |10>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      3 |     0 | sampling_percent | %     |  0.000 |
+| |11>>> pthread_condattr_setpshared                                                                                       | 139102 |     0 | sampling_percent | %     | 20.000 |
+| |11>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278204 |     0 | sampling_percent | %     | 40.001 |
+| |11>>> omp_fulfill_event                                                                                                 | 139090 |     0 | sampling_percent | %     | 19.999 |
+| |11>>> __sigaction                                                                                                       | 139102 |     0 | sampling_percent | %     | 20.000 |
+| |12>>> pthread_condattr_setpshared                                                                                       | 138770 |     0 | sampling_percent | %     | 20.000 |
+| |12>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 277540 |     0 | sampling_percent | %     | 40.001 |
+| |12>>> omp_fulfill_event                                                                                                 | 138757 |     0 | sampling_percent | %     | 19.998 |
+| |12>>> __sigaction                                                                                                       | 138770 |     0 | sampling_percent | %     | 20.000 |
+| |12>>> transport(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&,... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |12>>> project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::vector<... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |12>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |13>>> pthread_condattr_setpshared                                                                                       | 139191 |     0 | sampling_percent | %     | 20.000 |
+| |13>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278382 |     0 | sampling_percent | %     | 40.000 |
+| |13>>> omp_fulfill_event                                                                                                 | 139183 |     0 | sampling_percent | %     | 19.999 |
+| |13>>> __sigaction                                                                                                       | 139191 |     0 | sampling_percent | %     | 20.000 |
+| |13>>> lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&... |      1 |     0 | sampling_percent | %     |  0.000 |
+| |14>>> pthread_condattr_setpshared                                                                                       | 138843 |     0 | sampling_percent | %     | 20.001 |
+| |14>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 277686 |     0 | sampling_percent | %     | 40.001 |
+| |14>>> omp_fulfill_event                                                                                                 | 138825 |     0 | sampling_percent | %     | 19.998 |
+| |14>>> __sigaction                                                                                                       | 138843 |     0 | sampling_percent | %     | 20.001 |
+| |15>>> pthread_condattr_setpshared                                                                                       | 139101 |     0 | sampling_percent | %     | 20.000 |
+| |15>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>... | 278202 |     0 | sampling_percent | %     | 40.001 |
+| |15>>> omp_fulfill_event                                                                                                 | 139090 |     0 | sampling_percent | %     | 19.999 |
+| |15>>> __sigaction                                                                                                       | 139101 |     0 | sampling_percent | %     | 20.000 |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -1,0 +1,174 @@
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                   COUNTS NUMBER OF INVOCATIONS                                                                   |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                          LABEL                                                           | COUNT  | DEPTH  |   METRIC   |  SUM   |
+|--------------------------------------------------------------------------------------------------------------------------|--------|--------|------------|--------|
+| |00>>> __libc_start_main                                                                                                 | 137314 |      0 | trip_count | 137314 |
+| |00>>> |___libc_init_first                                                                                               | 137314 |      1 | trip_count | 137314 |
+| |00>>>   |_rocprofsys_init                                                                                               | 137314 |      2 | trip_count | 137314 |
+| |00>>>     |_main                                                                                                        | 137287 |      3 | trip_count | 137287 |
+| |00>>>       |_project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std:... |  53653 |      4 | trip_count |  53653 |
+| |00>>>         |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float... |  51132 |      5 | trip_count |  51132 |
+| |00>>>           |_omp_fulfill_event                                                                                     |  26503 |      6 | trip_count |  26503 |
+| |00>>>             |___sigaction                                                                                         |  26503 |      7 | trip_count |  26503 |
+| |00>>>           |_GOMP_parallel                                                                                         |  24404 |      6 | trip_count |  24404 |
+| |00>>>             |_omp_fulfill_event                                                                                   |  23944 |      7 | trip_count |  23944 |
+| |00>>>               |___sigaction                                                                                       |  23944 |      8 | trip_count |  23944 |
+| |00>>>             |___sigaction                                                                                         |    460 |      7 | trip_count |    460 |
+| |00>>>           |___sigaction                                                                                           |    225 |      6 | trip_count |    225 |
+| |00>>>         |_GOMP_parallel                                                                                           |   1046 |      5 | trip_count |   1046 |
+| |00>>>           |_omp_fulfill_event                                                                                     |   1013 |      6 | trip_count |   1013 |
+| |00>>>             |___sigaction                                                                                         |   1013 |      7 | trip_count |   1013 |
+| |00>>>           |___sigaction                                                                                           |     33 |      6 | trip_count |     33 |
+| |00>>>         |_omp_fulfill_event                                                                                       |   1202 |      5 | trip_count |   1202 |
+| |00>>>           |___sigaction                                                                                           |   1202 |      6 | trip_count |   1202 |
+| |00>>>         |___sigaction                                                                                             |    273 |      5 | trip_count |    273 |
+| |00>>>       |_GOMP_parallel                                                                                             |   1108 |      4 | trip_count |   1108 |
+| |00>>>         |___sigaction                                                                                             |     74 |      5 | trip_count |     74 |
+| |00>>>         |_omp_fulfill_event                                                                                       |   1034 |      5 | trip_count |   1034 |
+| |00>>>           |___sigaction                                                                                           |   1034 |      6 | trip_count |   1034 |
+| |00>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |  80835 |      4 | trip_count |  80835 |
+| |00>>>         |___sigaction                                                                                             |    422 |      5 | trip_count |    422 |
+| |00>>>         |_omp_fulfill_event                                                                                       |  41768 |      5 | trip_count |  41768 |
+| |00>>>           |___sigaction                                                                                           |  41768 |      6 | trip_count |  41768 |
+| |00>>>         |_GOMP_parallel                                                                                           |  38645 |      5 | trip_count |  38645 |
+| |00>>>           |_omp_fulfill_event                                                                                     |  38072 |      6 | trip_count |  38072 |
+| |00>>>             |___sigaction                                                                                         |  38072 |      7 | trip_count |  38072 |
+| |00>>>           |___sigaction                                                                                           |    573 |      6 | trip_count |    573 |
+| |00>>>       |_omp_fulfill_event                                                                                         |   1182 |      4 | trip_count |   1182 |
+| |00>>>         |___sigaction                                                                                             |   1182 |      5 | trip_count |   1182 |
+| |00>>>       |___sigaction                                                                                               |    430 |      4 | trip_count |    430 |
+| |00>>>       |_diffuse(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > c... |     47 |      4 | trip_count |     47 |
+| |00>>>         |___sigaction                                                                                             |     47 |      5 | trip_count |     47 |
+| |00>>>       |_std::ostream::write(char const*, long)                                                                    |     31 |      4 | trip_count |     31 |
+| |00>>>         |_std::basic_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)                            |     31 |      5 | trip_count |     31 |
+| |00>>>           |_std::__basic_file<char>::xsputn_2(char const*, long, char const*, long)                               |     30 |      6 | trip_count |     30 |
+| |00>>>             |___sigaction                                                                                         |     30 |      7 | trip_count |     30 |
+| |00>>>           |___sigaction                                                                                           |      1 |      6 | trip_count |      1 |
+| |00>>>       |_std::basic_ofstream<char, std::char_traits<char> >::close()                                               |      1 |      4 | trip_count |      1 |
+| |00>>>         |_std::basic_filebuf<char, std::char_traits<char> >::close()                                              |      1 |      5 | trip_count |      1 |
+| |00>>>           |_std::__basic_file<char>::close()                                                                      |      1 |      6 | trip_count |      1 |
+| |00>>>             |__IO_fclose                                                                                          |      1 |      7 | trip_count |      1 |
+| |00>>>               |__IO_file_close_it                                                                                 |      1 |      8 | trip_count |      1 |
+| |00>>>                 |___sigaction                                                                                     |      1 |      9 | trip_count |      1 |
+| |00>>>     |___sigaction                                                                                                 |     24 |      3 | trip_count |     24 |
+| |00>>>     |_rocprofsys_set_env                                                                                          |      1 |      3 | trip_count |      1 |
+| |00>>>       |_void std::vector<unsigned long, std::allocator<unsigned long> >::_M_realloc_insert<unsigned long>(__gn... |      1 |      4 | trip_count |      1 |
+| |00>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |00>>>     |_rocprofsys_finalize                                                                                         |      2 |      3 | trip_count |      2 |
+| |00>>>       |_rocprofsys_set_env                                                                                        |      2 |      4 | trip_count |      2 |
+| |00>>>         |_std::__throw_bad_optional_access()                                                                      |      2 |      5 | trip_count |      2 |
+| |00>>>           |___fprintf_chk                                                                                         |      2 |      6 | trip_count |      2 |
+| |00>>>             |_psiginfo                                                                                            |      2 |      7 | trip_count |      2 |
+| |00>>>               |__IO_file_xsputn                                                                                   |      2 |      8 | trip_count |      2 |
+| |00>>>                 |__IO_file_write                                                                                  |      2 |      9 | trip_count |      2 |
+| |00>>>                   |___sigaction                                                                                   |      2 |     10 | trip_count |      2 |
+| |01>>> pthread_condattr_setpshared                                                                                       | 138740 |      0 | trip_count | 138740 |
+| |01>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 138740 |      1 | trip_count | 138740 |
+| |01>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 138740 |      2 | trip_count | 138740 |
+| |01>>>     |_omp_fulfill_event                                                                                           | 138731 |      3 | trip_count | 138731 |
+| |01>>>       |___sigaction                                                                                               | 138730 |      4 | trip_count | 138730 |
+| |01>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      1 |      4 | trip_count |      1 |
+| |01>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |01>>>     |___sigaction                                                                                                 |      9 |      3 | trip_count |      9 |
+| |02>>> pthread_condattr_setpshared                                                                                       | 139393 |      0 | trip_count | 139393 |
+| |02>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139393 |      1 | trip_count | 139393 |
+| |02>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139393 |      2 | trip_count | 139393 |
+| |02>>>     |_omp_fulfill_event                                                                                           | 139387 |      3 | trip_count | 139387 |
+| |02>>>       |___sigaction                                                                                               | 139386 |      4 | trip_count | 139386 |
+| |02>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      1 |      4 | trip_count |      1 |
+| |02>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |02>>>     |___sigaction                                                                                                 |      6 |      3 | trip_count |      6 |
+| |03>>> pthread_condattr_setpshared                                                                                       | 137479 |      0 | trip_count | 137479 |
+| |03>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 137479 |      1 | trip_count | 137479 |
+| |03>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 137479 |      2 | trip_count | 137479 |
+| |03>>>     |_omp_fulfill_event                                                                                           | 137471 |      3 | trip_count | 137471 |
+| |03>>>       |___sigaction                                                                                               | 137471 |      4 | trip_count | 137471 |
+| |03>>>     |___sigaction                                                                                                 |      8 |      3 | trip_count |      8 |
+| |04>>> pthread_condattr_setpshared                                                                                       | 139434 |      0 | trip_count | 139434 |
+| |04>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139434 |      1 | trip_count | 139434 |
+| |04>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139434 |      2 | trip_count | 139434 |
+| |04>>>     |_omp_fulfill_event                                                                                           | 139430 |      3 | trip_count | 139430 |
+| |04>>>       |___sigaction                                                                                               | 139430 |      4 | trip_count | 139430 |
+| |04>>>     |___sigaction                                                                                                 |      4 |      3 | trip_count |      4 |
+| |05>>> pthread_condattr_setpshared                                                                                       | 137696 |      0 | trip_count | 137696 |
+| |05>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 137696 |      1 | trip_count | 137696 |
+| |05>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 137696 |      2 | trip_count | 137696 |
+| |05>>>     |_omp_fulfill_event                                                                                           | 137681 |      3 | trip_count | 137681 |
+| |05>>>       |___sigaction                                                                                               | 137681 |      4 | trip_count | 137681 |
+| |05>>>     |___sigaction                                                                                                 |     15 |      3 | trip_count |     15 |
+| |06>>> pthread_condattr_setpshared                                                                                       | 139083 |      0 | trip_count | 139083 |
+| |06>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139083 |      1 | trip_count | 139083 |
+| |06>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139083 |      2 | trip_count | 139083 |
+| |06>>>     |_omp_fulfill_event                                                                                           | 139075 |      3 | trip_count | 139075 |
+| |06>>>       |___sigaction                                                                                               | 139074 |      4 | trip_count | 139074 |
+| |06>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      1 |      4 | trip_count |      1 |
+| |06>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |06>>>     |___sigaction                                                                                                 |      8 |      3 | trip_count |      8 |
+| |07>>> pthread_condattr_setpshared                                                                                       | 138867 |      0 | trip_count | 138867 |
+| |07>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 138867 |      1 | trip_count | 138867 |
+| |07>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 138867 |      2 | trip_count | 138867 |
+| |07>>>     |_omp_fulfill_event                                                                                           | 138856 |      3 | trip_count | 138856 |
+| |07>>>       |___sigaction                                                                                               | 138856 |      4 | trip_count | 138856 |
+| |07>>>     |___sigaction                                                                                                 |     11 |      3 | trip_count |     11 |
+| |08>>> pthread_condattr_setpshared                                                                                       | 139254 |      0 | trip_count | 139254 |
+| |08>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139254 |      1 | trip_count | 139254 |
+| |08>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139254 |      2 | trip_count | 139254 |
+| |08>>>     |_omp_fulfill_event                                                                                           | 139244 |      3 | trip_count | 139244 |
+| |08>>>       |___sigaction                                                                                               | 139244 |      4 | trip_count | 139244 |
+| |08>>>     |___sigaction                                                                                                 |     10 |      3 | trip_count |     10 |
+| |09>>> pthread_condattr_setpshared                                                                                       | 139616 |      0 | trip_count | 139616 |
+| |09>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139616 |      1 | trip_count | 139616 |
+| |09>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139616 |      2 | trip_count | 139616 |
+| |09>>>     |_omp_fulfill_event                                                                                           | 139603 |      3 | trip_count | 139603 |
+| |09>>>       |___sigaction                                                                                               | 139602 |      4 | trip_count | 139602 |
+| |09>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      1 |      4 | trip_count |      1 |
+| |09>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |09>>>     |___sigaction                                                                                                 |     13 |      3 | trip_count |     13 |
+| |10>>> pthread_condattr_setpshared                                                                                       | 139243 |      0 | trip_count | 139243 |
+| |10>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139243 |      1 | trip_count | 139243 |
+| |10>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139243 |      2 | trip_count | 139243 |
+| |10>>>     |_omp_fulfill_event                                                                                           | 139233 |      3 | trip_count | 139233 |
+| |10>>>       |___sigaction                                                                                               | 139230 |      4 | trip_count | 139230 |
+| |10>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      3 |      4 | trip_count |      3 |
+| |10>>>         |___sigaction                                                                                             |      3 |      5 | trip_count |      3 |
+| |10>>>     |___sigaction                                                                                                 |     10 |      3 | trip_count |     10 |
+| |11>>> pthread_condattr_setpshared                                                                                       | 139102 |      0 | trip_count | 139102 |
+| |11>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139102 |      1 | trip_count | 139102 |
+| |11>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139102 |      2 | trip_count | 139102 |
+| |11>>>     |_omp_fulfill_event                                                                                           | 139090 |      3 | trip_count | 139090 |
+| |11>>>       |___sigaction                                                                                               | 139090 |      4 | trip_count | 139090 |
+| |11>>>     |___sigaction                                                                                                 |     12 |      3 | trip_count |     12 |
+| |12>>> pthread_condattr_setpshared                                                                                       | 138770 |      0 | trip_count | 138770 |
+| |12>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 138770 |      1 | trip_count | 138770 |
+| |12>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 138770 |      2 | trip_count | 138770 |
+| |12>>>     |_omp_fulfill_event                                                                                           | 138757 |      3 | trip_count | 138757 |
+| |12>>>       |___sigaction                                                                                               | 138754 |      4 | trip_count | 138754 |
+| |12>>>       |_transport(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >... |      1 |      4 | trip_count |      1 |
+| |12>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |12>>>       |_project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std:... |      1 |      4 | trip_count |      1 |
+| |12>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |12>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      1 |      4 | trip_count |      1 |
+| |12>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |12>>>     |___sigaction                                                                                                 |     13 |      3 | trip_count |     13 |
+| |13>>> pthread_condattr_setpshared                                                                                       | 139191 |      0 | trip_count | 139191 |
+| |13>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139191 |      1 | trip_count | 139191 |
+| |13>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139191 |      2 | trip_count | 139191 |
+| |13>>>     |_omp_fulfill_event                                                                                           | 139183 |      3 | trip_count | 139183 |
+| |13>>>       |___sigaction                                                                                               | 139182 |      4 | trip_count | 139182 |
+| |13>>>       |_lin_solve2(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> ... |      1 |      4 | trip_count |      1 |
+| |13>>>         |___sigaction                                                                                             |      1 |      5 | trip_count |      1 |
+| |13>>>     |___sigaction                                                                                                 |      8 |      3 | trip_count |      8 |
+| |14>>> pthread_condattr_setpshared                                                                                       | 138843 |      0 | trip_count | 138843 |
+| |14>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 138843 |      1 | trip_count | 138843 |
+| |14>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 138843 |      2 | trip_count | 138843 |
+| |14>>>     |_omp_fulfill_event                                                                                           | 138825 |      3 | trip_count | 138825 |
+| |14>>>       |___sigaction                                                                                               | 138825 |      4 | trip_count | 138825 |
+| |14>>>     |___sigaction                                                                                                 |     18 |      3 | trip_count |     18 |
+| |15>>> pthread_condattr_setpshared                                                                                       | 139101 |      0 | trip_count | 139101 |
+| |15>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<cha... | 139101 |      1 | trip_count | 139101 |
+| |15>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<c... | 139101 |      2 | trip_count | 139101 |
+| |15>>>     |_omp_fulfill_event                                                                                           | 139090 |      3 | trip_count | 139090 |
+| |15>>>       |___sigaction                                                                                               | 139090 |      4 | trip_count | 139090 |
+| |15>>>     |___sigaction                                                                                                 |     11 |      3 | trip_count |     11 |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|

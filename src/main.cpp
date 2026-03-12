@@ -22,7 +22,8 @@ static inline int IX(int i, int j, int N) { return i + (N + 2) * j; }
 
 enum class LinSolver {
     Solve0,
-    Solve1
+    Solve1,
+    Solve2
 };
 
 // 'Diffuse' x by a factor of a
@@ -34,8 +35,10 @@ static void diffuse(int b, std::vector<float>& x, const std::vector<float>& x0,
 
     if (solver == LinSolver::Solve0) {
         lin_solve0(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
-    } else {
+    } else if (solver == LinSolver::Solve1) {
         lin_solve1(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
+    } else {
+        lin_solve2(b, x, x0, a, 1.0f + 4.0f * a, N, 24);
     }
 }
 
@@ -117,8 +120,10 @@ static void project(std::vector<float>& u, std::vector<float>& v, std::vector<fl
 
     if (solver == LinSolver::Solve0) {
         lin_solve0(0, p, div, 1.0f, 4.0f, N, 24);
-    } else {
+    } else if (solver == LinSolver::Solve1) {
         lin_solve1(0, p, div, 1.0f, 4.0f, N, 24);
+    } else {
+        lin_solve2(0, p, div, 1.0f, 4.0f, N, 24);
     }
 
     #pragma omp parallel for schedule(static)
@@ -218,6 +223,7 @@ int main(int argc, char** argv) {
     if (argc >= 4) visc = std::atof(argv[3]);
     if (argc >= 5) diff = std::atof(argv[4]);
     if (argc >= 6) diss = std::atof(argv[5]);
+    if (argc >= 7) solver = (LinSolver)std::atoi(argv[6]);
 
     Fluid fluid(N, dt, visc, diff, diss, solver);
 

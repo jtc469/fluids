@@ -1,0 +1,179 @@
+{
+ "rocprofiler-systems": {
+  "functions": {
+   "GOMP_parallel": [
+    10178640379145350018,
+    11293628358513442042,
+    11293628358513442044,
+    11293628358513442046,
+    11293628358513442047
+   ],
+   "MPI_Comm_rank": [
+    5247856548211295863
+   ],
+   "MPI_Comm_size": [
+    9800048103351992607
+   ],
+   "MPI_Finalize": [
+    14149572108809176679
+   ],
+   "MPI_Init": [
+    15635305738159448556
+   ],
+   "MPI_Init_thread": [
+    16593032938605944564
+   ],
+   "_Exit": [
+    11897601850601340186
+   ],
+   "__libc_init_first": [
+    3913859263109140916,
+    8525575093836872753,
+    8525575093836872754
+   ],
+   "__libc_start_main": [
+    5802881093256591792,
+    9570191557260373812
+   ],
+   "__sigaction": [
+    270529148189673317,
+    10137577509087563856,
+    10137577509087563858,
+    10137577509087563859,
+    10137577509087563860,
+    10137577509087563868,
+    10137577509087563869
+   ],
+   "abort": [
+    16014859460070068810
+   ],
+   "causal_gotcha": [
+    6798030486211834302
+   ],
+   "diffuse(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&, float, float, int, LinSolver)": [
+    13154063182912374866,
+    15676691687901997794,
+    15676691687901997822
+   ],
+   "exit": [
+    16711936661946036647
+   ],
+   "fork": [
+    10784045628480842107
+   ],
+   "lin_solve1(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&, float, float, int, int)": [
+    3413925082220686585,
+    3413925082220686586,
+    3413925082220686590,
+    5391685860860117639
+   ],
+   "main": [
+    5823919491437317578,
+    5823919491437317583,
+    11868120863286193964
+   ],
+   "mbind": [
+    3809147642648803628
+   ],
+   "migrate_pages": [
+    8748301944647776492
+   ],
+   "move_pages": [
+    6610375604690534853
+   ],
+   "numa_alloc": [
+    7113396289054810430
+   ],
+   "numa_alloc_interleaved": [
+    12906658703067614028
+   ],
+   "numa_alloc_local": [
+    12978237997808739
+   ],
+   "numa_alloc_onnode": [
+    16490871746098411226
+   ],
+   "numa_free": [
+    5913693315178689722
+   ],
+   "numa_migrate_pages": [
+    8085933945063061935
+   ],
+   "numa_move_pages": [
+    7197609118176772879
+   ],
+   "numa_realloc": [
+    8142340014522669391
+   ],
+   "omp_fulfill_event": [
+    3924114008184499712,
+    3924114008184499716,
+    3924114008184499717,
+    3924114008184499719,
+    3924114008184499738,
+    3924114008184499739,
+    16709900055852089546
+   ],
+   "project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, int, LinSolver)": [
+    1560208327400954554,
+    1799606382055517168,
+    1799606382055517180
+   ],
+   "pthread_barrier_wait": [
+    17197545726087919686
+   ],
+   "pthread_condattr_setpshared": [
+    464185275766424753,
+    4209276110683995445
+   ],
+   "pthread_create": [
+    501283434254352003,
+    6619084377120830202
+   ],
+   "pthread_gotcha": [
+    7052162594254717710
+   ],
+   "pthread_join": [
+    2814950835389844446
+   ],
+   "quick_exit": [
+    6515642576547909555
+   ],
+   "rocprofsys/process/2505725": [
+    6633966202753116558
+   ],
+   "rocprofsys/process/2505725/thread/0": [
+    10935502082878131521
+   ],
+   "rocprofsys_init": [
+    5097739107168187699,
+    5097739107168187701,
+    17540128626711443849
+   ],
+   "start_thread": [
+    14526682463026408130
+   ],
+   "std::__basic_file<char>::xsputn_2(char const*, long, char const*, long)": [
+    6587545843461004280,
+    15318797301389957860,
+    15318797301389957870
+   ],
+   "std::basic_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)": [
+    265929251840320630,
+    265929251840320637,
+    16155817031167037422
+   ],
+   "std::ostream::write(char const*, long)": [
+    8971266198821946152,
+    11667985819954255306,
+    11667985819954255310
+   ],
+   "std::pair<std::_Rb_tree_iterator<std::string >, bool> std::_Rb_tree<std::string, std::string, std::_Identity<std::string >, std::less<std::string >, std::allocator<std::string > >::_M_emplace_unique<char const (&) [14]>(char const (&) [14])": [
+    4291126326473500853,
+    12389061318284491568,
+    12389061318284491570,
+    12389061318284491571
+   ]
+  }
+ }
+}

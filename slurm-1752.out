@@ -1,0 +1,6 @@
+rm -f build/main build/main.o build/numerics.o build/density.bin
+amdclang++ -Iinclude -std=c++17 -O3 -g -fopenmp --offload-arch=gfx942 -fno-omit-frame-pointer -ffast-math -c src/main.cpp -o build/main.o
+make: amdclang++: No such file or directory
+make: *** [Makefile:23: build/main.o] Error 127
+slurmstepd: error: execve(): /shared/prerelease/home/dirac-cch/jacline/fluids/./build/main: No such file or directory
+srun: error: ppac-pl1-s25-40: task 0: Exited with exit code 2

@@ -1,0 +1,99 @@
+SHELL=/bin/bash
+SLURM_JOB_USER=jacline
+SLURM_TASKS_PER_NODE=1
+SLURM_JOB_UID=12561
+SLURM_TASK_PID=2679733
+LMOD_arch=x86_64
+SLURM_LOCALID=0
+SLURM_SUBMIT_DIR=/shared/prerelease/home/dirac-cch/jacline/fluids
+HOSTNAME=ppac-pl1-s25-40
+SLURMD_NODENAME=ppac-pl1-s25-40
+SLURM_JOB_START_TIME=1773325127
+HYDRA_LAUNCHER_EXTRA_ARGS=--external-launcher
+SSH_AUTH_SOCK=/shared/prerelease/home/dirac-cch/jacline/.ssh/agent.sock
+AGENT=1
+SLURM_CLUSTER_NAME=prerelease01
+SLURM_JOB_END_TIME=1773325727
+SLURM_CPUS_ON_NODE=1
+SSH_AGENT_PID=2467739
+SLURM_JOB_CPUS_PER_NODE=1
+LMOD_DIR=/usr/share/lmod/lmod/libexec
+PRTE_MCA_plm_slurm_args=--external-launcher
+PWD=/shared/prerelease/home/dirac-cch/jacline/fluids
+SLURM_GTIDS=0
+LOGNAME=jacline
+XDG_SESSION_TYPE=tty
+SLURM_JOB_PARTITION=1CN192C24G1H_MI300A_Ubuntu22
+MODULESHOME=/usr/share/lmod/lmod
+MANPATH=/usr/share/lmod/lmod/share/man:/shared/apps/ubuntu/man:
+LMOD_PREPEND_BLOCK=normal
+SLURM_JOB_NUM_NODES=1
+SLURM_JOBID=1700
+SLURM_JOB_QOS=normal
+I_MPI_HYDRA_BOOTSTRAP_EXEC_EXTRA_ARGS=--external-launcher
+MOTD_SHOWN=pam
+OPENCODE_PID=2497854
+HOME=/shared/prerelease/home/dirac-cch/jacline
+OPENCODE=1
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
+SLURM_PROCID=0
+TMPDIR=/tmp/jacline/1700
+SLURM_TOPOLOGY_ADDR=ppac-pl1-s25-40
+LMOD_VERSION=6.6
+SSH_CONNECTION=31.205.83.28 62010 10.194.42.31 22
+LMOD_IGNORE_CACHE=1
+HYDRA_BOOTSTRAP=slurm
+MODULEPATH_ROOT=/usr/modulefiles
+SLURM_TOPOLOGY_ADDR_PATTERN=node
+SLURM_MEM_PER_CPU=2400
+LESSCLOSE=/usr/bin/lesspipe %s %s
+XDG_SESSION_CLASS=user
+LMOD_PKG=/usr/share/lmod/lmod
+SLURM_SCRIPT_CONTEXT=prolog_task
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=jacline
+SLURM_NODELIST=ppac-pl1-s25-40
+ENVIRONMENT=BATCH
+SLURM_JOB_ACCOUNT=dirac-cch
+SLURM_PRIO_PROCESS=0
+LMOD_SETTARG_CMD=:
+SHLVL=2
+SLURM_NNODES=1
+BASH_ENV=/usr/share/lmod/lmod/init/bash
+LMOD_FULL_SETTARG_SUPPORT=no
+LMOD_sys=Linux
+XDG_SESSION_ID=24428
+SLURM_SUBMIT_HOST=pl1vm1mi300ctln01
+XDG_RUNTIME_DIR=/run/user/12561
+LMOD_COLORIZE=yes
+SLURM_JOB_ID=1700
+SLURM_NODEID=0
+SSH_CLIENT=31.205.83.28 62010 22
+OMP_NUM_THREADS=
+XDG_DATA_DIRS=/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+SLURM_CONF=/etc/slurm/slurm.conf
+PATH=/shared/prerelease/home/dirac-cch/jacline/.opencode/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SLURM_JOB_NAME=fluids
+MODULEPATH=/shared/apps/modules/ubuntu/lmodfiles/base
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/12561/bus
+LMOD_CMD=/usr/share/lmod/lmod/libexec/lmod
+SSH_TTY=/dev/pts/188
+OMPI_MCA_plm_slurm_args=--external-launcher
+SLURM_JOB_GID=12010
+OLDPWD=/shared/prerelease/home/dirac-cch/jacline/fluids
+SLURM_JOB_NODELIST=ppac-pl1-s25-40
+I_MPI_HYDRA_BOOTSTRAP=slurm
+BASH_FUNC_ml%%=() {  eval $($LMOD_DIR/ml_cmd "$@")
+}
+BASH_FUNC_module%%=() {  eval $($LMOD_CMD bash "$@");
+ [ $? = 0 ] && eval $(${LMOD_SETTARG_CMD:-:} -s sh)
+}
+_=/usr/bin/env
+
+libgomp: Invalid value for environment variable OMP_NUM_THREADS
+Progress: 100/300 steps
+Progress: 200/300 steps
+Progress: 300/300 steps
+Sim complete: N=512, steps=300, took 15.15 s

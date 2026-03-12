@@ -1,0 +1,8 @@
+Lmod has detected the following error: The following module(s) are unknown:
+"rocprofiler-systems/6.3.0"
+
+Please check the spelling or version number. Also try "module spider ..."
+
+
+
+/var/spool/slurm-llnl/job01713/slurm_script: line 12: rocprof-sys-run: command not found

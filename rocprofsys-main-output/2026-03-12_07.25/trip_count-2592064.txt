@@ -1,0 +1,59 @@
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                   COUNTS NUMBER OF INVOCATIONS                                                                   |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                          LABEL                                                           | COUNT  | DEPTH  |   METRIC   |  SUM   |
+|--------------------------------------------------------------------------------------------------------------------------|--------|--------|------------|--------|
+| |0>>> __libc_start_main                                                                                                  |   2239 |      0 | trip_count |   2239 |
+| |0>>> |___libc_init_first                                                                                                |   2239 |      1 | trip_count |   2239 |
+| |0>>>   |_rocprofsys_init                                                                                                |   2239 |      2 | trip_count |   2239 |
+| |0>>>     |_main                                                                                                         |   2234 |      3 | trip_count |   2234 |
+| |0>>>       |_lin_solve1(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >... |   1004 |      4 | trip_count |   1004 |
+| |0>>>         |_omp_fulfill_event                                                                                        |    538 |      5 | trip_count |    538 |
+| |0>>>           |___sigaction                                                                                            |    538 |      6 | trip_count |    538 |
+| |0>>>         |_GOMP_parallel                                                                                            |    430 |      5 | trip_count |    430 |
+| |0>>>           |___sigaction                                                                                            |     54 |      6 | trip_count |     54 |
+| |0>>>           |_omp_fulfill_event                                                                                      |    376 |      6 | trip_count |    376 |
+| |0>>>             |___sigaction                                                                                          |    376 |      7 | trip_count |    376 |
+| |0>>>         |___sigaction                                                                                              |     36 |      5 | trip_count |     36 |
+| |0>>>       |_project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::... |    646 |      4 | trip_count |    646 |
+| |0>>>         |_omp_fulfill_event                                                                                        |    177 |      5 | trip_count |    177 |
+| |0>>>           |___sigaction                                                                                            |    177 |      6 | trip_count |    177 |
+| |0>>>         |_GOMP_parallel                                                                                            |    170 |      5 | trip_count |    170 |
+| |0>>>           |___sigaction                                                                                            |     21 |      6 | trip_count |     21 |
+| |0>>>           |_omp_fulfill_event                                                                                      |    149 |      6 | trip_count |    149 |
+| |0>>>             |___sigaction                                                                                          |    149 |      7 | trip_count |    149 |
+| |0>>>         |_lin_solve1(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float>... |    297 |      5 | trip_count |    297 |
+| |0>>>           |_GOMP_parallel                                                                                          |    146 |      6 | trip_count |    146 |
+| |0>>>             |___sigaction                                                                                          |     17 |      7 | trip_count |     17 |
+| |0>>>             |_omp_fulfill_event                                                                                    |    129 |      7 | trip_count |    129 |
+| |0>>>               |___sigaction                                                                                        |    129 |      8 | trip_count |    129 |
+| |0>>>           |_omp_fulfill_event                                                                                      |    146 |      6 | trip_count |    146 |
+| |0>>>             |___sigaction                                                                                          |    146 |      7 | trip_count |    146 |
+| |0>>>           |___sigaction                                                                                            |      5 |      6 | trip_count |      5 |
+| |0>>>         |___sigaction                                                                                              |      2 |      5 | trip_count |      2 |
+| |0>>>       |_GOMP_parallel                                                                                              |    323 |      4 | trip_count |    323 |
+| |0>>>         |___sigaction                                                                                              |    184 |      5 | trip_count |    184 |
+| |0>>>         |_omp_fulfill_event                                                                                        |    139 |      5 | trip_count |    139 |
+| |0>>>           |___sigaction                                                                                            |    139 |      6 | trip_count |    139 |
+| |0>>>       |_omp_fulfill_event                                                                                          |    222 |      4 | trip_count |    222 |
+| |0>>>         |___sigaction                                                                                              |    222 |      5 | trip_count |    222 |
+| |0>>>       |_std::ostream::write(char const*, long)                                                                     |     16 |      4 | trip_count |     16 |
+| |0>>>         |_std::basic_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)                             |     16 |      5 | trip_count |     16 |
+| |0>>>           |_std::__basic_file<char>::xsputn_2(char const*, long, char const*, long)                                |     16 |      6 | trip_count |     16 |
+| |0>>>             |___sigaction                                                                                          |     16 |      7 | trip_count |     16 |
+| |0>>>       |_diffuse(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > co... |     17 |      4 | trip_count |     17 |
+| |0>>>         |___sigaction                                                                                              |     17 |      5 | trip_count |     17 |
+| |0>>>       |___sigaction                                                                                                |      5 |      4 | trip_count |      5 |
+| |0>>>       |_std::basic_ofstream<char, std::char_traits<char> >::close()                                                |      1 |      4 | trip_count |      1 |
+| |0>>>         |_std::basic_filebuf<char, std::char_traits<char> >::close()                                               |      1 |      5 | trip_count |      1 |
+| |0>>>           |_std::__basic_file<char>::close()                                                                       |      1 |      6 | trip_count |      1 |
+| |0>>>             |__IO_fclose                                                                                           |      1 |      7 | trip_count |      1 |
+| |0>>>               |__IO_file_close_it                                                                                  |      1 |      8 | trip_count |      1 |
+| |0>>>                 |___sigaction                                                                                      |      1 |      9 | trip_count |      1 |
+| |0>>>     |___sigaction                                                                                                  |      5 |      3 | trip_count |      5 |
+| |1>>> pthread_condattr_setpshared                                                                                        |   2187 |      0 | trip_count |   2187 |
+| |1>>> |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char... |   2187 |      1 | trip_count |   2187 |
+| |1>>>   |_std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<ch... |   2187 |      2 | trip_count |   2187 |
+| |1>>>     |_omp_fulfill_event                                                                                            |   2187 |      3 | trip_count |   2187 |
+| |1>>>       |___sigaction                                                                                                |   2187 |      4 | trip_count |   2187 |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------|

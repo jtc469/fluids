@@ -1,0 +1,46 @@
+[0m[0m[0m[0m[01;34m[rocprof-sys][2696145] /proc/sys/kernel/perf_event_paranoid has a value of 4. Disabling PAPI (requires a value <= 2)...
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145] In order to enable PAPI support, run 'echo N | sudo tee /proc/sys/kernel/perf_event_paranoid' where N is <= 2
+[0m[0m[0m[0m
+[01;32mROCPROFSYS: HSA_TOOLS_LIB=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys-dl.so.0.1.0
+[0m[01;32mROCPROFSYS: HSA_TOOLS_REPORT_LOAD_FAILURE=1
+[0m[01;32mROCPROFSYS: LD_PRELOAD=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys-dl.so.0.1.0
+[0m[01;32mROCPROFSYS: OMP_TOOL_LIBRARIES=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys-dl.so.0.1.0
+[0m[01;32mROCPROFSYS: ROCPROFSYS_OUTPUT_PATH=rocprofsys-main-output
+[0m[01;32mROCPROFSYS: ROCPROFSYS_PROFILE=true
+[0m[01;32mROCPROFSYS: ROCPROFSYS_ROCTRACER_HIP_ACTIVITY=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_ROCTRACER_HSA_ACTIVITY=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_SAMPLING_CPUTIME=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_SAMPLING_FREQ=500
+[0m[01;32mROCPROFSYS: ROCPROFSYS_SAMPLING_REALTIME=true
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_RCCLP=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCM_SMI=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCPROFILER=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCTRACER=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCTX=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_SAMPLING=true
+[0m[01;32mROCPROFSYS: ROCP_HSA_INTERCEPT=1
+[0m[01;32mROCPROFSYS: ROCP_TOOL_LIB=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys.so.0.1.0
+[0m[0m[0m[01;34m[rocprof-sys][dl][2696145] rocprofsys_main
+[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145][rocprofsys_init_tooling] Instrumentation mode: Sampling
+[0m[0m[0m[0m[01;34m
+
+     ____   ___   ____ __  __   ______   ______ _____ _____ __  __ ____    ____  ____   ___  _____ ___ _     _____ ____
+    |  _ \ / _ \ / ___|  \/  | / ___\ \ / / ___|_   _| ____|  \/  / ___|  |  _ \|  _ \ / _ \|  ___|_ _| |   | ____|  _ \
+    | |_) | | | | |   | |\/| | \___ \\ V /\___ \ | | |  _| | |\/| \___ \  | |_) | |_) | | | | |_   | || |   |  _| | |_) |
+    |  _ <| |_| | |___| |  | |  ___) || |  ___) || | | |___| |  | |___) | |  __/|  _ <| |_| |  _|  | || |___| |___|  _ <
+    |_| \_\\___/ \____|_|  |_| |____/ |_| |____/ |_| |_____|_|  |_|____/  |_|   |_| \_\\___/|_|   |___|_____|_____|_| \_\
+
+    rocprof-sys v0.1.0 (rev: b569c837e455f71dd76d06392d0b901ae927deca, x86_64-linux-gnu, compiler: GNU v11.4.0, rocm: v6.3.x)[0m
+[0m[0m[0m[0m[01;34m[rocprof-sys][2696145] /proc/sys/kernel/perf_event_paranoid has a value of 4. Disabling PAPI (requires a value <= 2)...
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145] In order to enable PAPI support, run 'echo N | sudo tee /proc/sys/kernel/perf_event_paranoid' where N is <= 2
+[0m[0m[0m[0m
+Progress: 100/300 steps
+Progress: 200/300 steps
+Progress: 300/300 steps
+Sim complete: N=512, steps=300, took 299.536 s
+[0m[0m[0m[0m[01;34m[rocprof-sys][2696145][0][rocprofsys_finalize] finalizing...
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145][0][rocprofsys_finalize] 
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145][0][rocprofsys_finalize] rocprofsys/process/2696145 : 304.862655 sec wall_clock, 5137.048 MB peak_rss,  760.193 MB page_rss, 4680.990000 sec cpu_clock, 1535.4 % cpu_util [laps: 1]
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145][0][rocprofsys_finalize] rocprofsys/process/2696145/thread/0 : 299.794675 sec wall_clock, 257.332328 sec thread_cpu_clock,   85.8 % thread_cpu_util, 5137.048 MB peak_rss [laps: 1]
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2696145][0][rocprofsys_finalize] 
+[0m[0m[0m[0m

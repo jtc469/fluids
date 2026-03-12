@@ -1,0 +1,33 @@
+[0m[0m[0m[0m[01;34m[rocprof-sys][2693309] /proc/sys/kernel/perf_event_paranoid has a value of 4. Disabling PAPI (requires a value <= 2)...
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2693309] In order to enable PAPI support, run 'echo N | sudo tee /proc/sys/kernel/perf_event_paranoid' where N is <= 2
+[0m[0m[0m[0m
+[01;32mROCPROFSYS: HSA_TOOLS_LIB=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys-dl.so.0.1.0
+[0m[01;32mROCPROFSYS: HSA_TOOLS_REPORT_LOAD_FAILURE=1
+[0m[01;32mROCPROFSYS: LD_PRELOAD=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys-dl.so.0.1.0
+[0m[01;32mROCPROFSYS: OMP_TOOL_LIBRARIES=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys-dl.so.0.1.0
+[0m[01;32mROCPROFSYS: ROCPROFSYS_CONFIG_FILE=rocprof-sys-config.cfg
+[0m[01;32mROCPROFSYS: ROCPROFSYS_ROCTRACER_HIP_ACTIVITY=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_ROCTRACER_HSA_ACTIVITY=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_RCCLP=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCM_SMI=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCPROFILER=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCTRACER=false
+[0m[01;32mROCPROFSYS: ROCPROFSYS_USE_ROCTX=false
+[0m[01;32mROCPROFSYS: ROCP_HSA_INTERCEPT=1
+[0m[01;32mROCPROFSYS: ROCP_TOOL_LIB=/shared/apps/ubuntu/opt/rocm-6.3.0/lib/librocprof-sys.so.0.1.0
+[0m[0m[0m[01;34m[rocprof-sys][dl][2693309] rocprofsys_main
+[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2693309][rocprofsys_init_tooling] Instrumentation mode: Sampling
+[0m[0m[0m[0m[01;34m
+
+     ____   ___   ____ __  __   ______   ______ _____ _____ __  __ ____    ____  ____   ___  _____ ___ _     _____ ____
+    |  _ \ / _ \ / ___|  \/  | / ___\ \ / / ___|_   _| ____|  \/  / ___|  |  _ \|  _ \ / _ \|  ___|_ _| |   | ____|  _ \
+    | |_) | | | | |   | |\/| | \___ \\ V /\___ \ | | |  _| | |\/| \___ \  | |_) | |_) | | | | |_   | || |   |  _| | |_) |
+    |  _ <| |_| | |___| |  | |  ___) || |  ___) || | | |___| |  | |___) | |  __/|  _ <| |_| |  _|  | || |___| |___|  _ <
+    |_| \_\\___/ \____|_|  |_| |____/ |_| |____/ |_| |_____|_|  |_|____/  |_|   |_| \_\\___/|_|   |___|_____|_____|_| \_\
+
+    rocprof-sys v0.1.0 (rev: b569c837e455f71dd76d06392d0b901ae927deca, x86_64-linux-gnu, compiler: GNU v11.4.0, rocm: v6.3.x)[0m
+[0m[0m[0m[0m[01;34m[rocprof-sys][2693309] /proc/sys/kernel/perf_event_paranoid has a value of 4. Disabling PAPI (requires a value <= 2)...
+[0m[0m[0m[0m[0m[0m[0m[0m[01;34m[rocprof-sys][2693309] In order to enable PAPI support, run 'echo N | sudo tee /proc/sys/kernel/perf_event_paranoid' where N is <= 2
+[0m[0m[0m[0mterminate called after throwing an instance of 'std::runtime_error'
+  what():  Unknown setting 'ROCPROFSYS_USE_ROCM' (value = 'false')
+/var/spool/slurm-llnl/job01714/slurm_script: line 12: 2693309 Aborted                 (core dumped) rocprof-sys-run --config rocprof-sys-config.cfg -- ./build/main 512 300 1e-6 1e-6 2e-2 2

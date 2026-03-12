@@ -1,0 +1,15 @@
+=== Solve0 (Gauss-Seidel, sequential) ===
+Progress: 100/300 steps
+Progress: 200/300 steps
+Progress: 300/300 steps
+Sim complete: N=512, steps=300, took 5.876 s
+=== Solve1 (Jacobi, parallel) ===
+Progress: 100/300 steps
+Progress: 200/300 steps
+Progress: 300/300 steps
+Sim complete: N=512, steps=300, took 3.297 s
+=== Solve2 (Red-Black Gauss-Seidel, parallel) ===
+Progress: 100/300 steps
+Progress: 200/300 steps
+Progress: 300/300 steps
+Sim complete: N=512, steps=300, took 5.75 s

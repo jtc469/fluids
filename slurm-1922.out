@@ -1,0 +1,8 @@
+rm -f build/main build/main.o build/numerics.o build/density.bin
+amdclang++ -Iinclude -std=c++17 -O3 -g -fopenmp --offload-arch=gfx942 -fno-omit-frame-pointer -ffast-math -c src/main.cpp -o build/main.o
+amdclang++ -Iinclude -std=c++17 -O3 -g -fopenmp --offload-arch=gfx942 -fno-omit-frame-pointer -ffast-math -c src/numerics.cpp -o build/numerics.o
+amdclang++ build/main.o build/numerics.o -fopenmp --offload-arch=gfx942 -o build/main
+Progress: 100/300 steps
+Progress: 200/300 steps
+Progress: 300/300 steps
+Sim complete: N=512, steps=300, took 15.594 s

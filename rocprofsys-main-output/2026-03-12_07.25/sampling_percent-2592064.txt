@@ -1,0 +1,28 @@
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                             PERCENTAGE OF SAMPLES                                                                            |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|                                                          LABEL                                                           | COUNT | DEPTH |      METRIC      | UNITS |  SUM   |
+|--------------------------------------------------------------------------------------------------------------------------|-------|-------|------------------|-------|--------|
+| |0>>> __libc_start_main                                                                                                  |  2239 |     0 | sampling_percent | %     | 13.862 |
+| |0>>> __libc_init_first                                                                                                  |  2239 |     0 | sampling_percent | %     | 13.862 |
+| |0>>> rocprofsys_init                                                                                                    |  2239 |     0 | sampling_percent | %     | 13.862 |
+| |0>>> main                                                                                                               |  2234 |     0 | sampling_percent | %     | 13.831 |
+| |0>>> lin_solve1(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&,... |  1301 |     0 | sampling_percent | %     |  8.055 |
+| |0>>> omp_fulfill_event                                                                                                  |  1876 |     0 | sampling_percent | %     | 11.615 |
+| |0>>> __sigaction                                                                                                        |  2239 |     0 | sampling_percent | %     | 13.862 |
+| |0>>> project(std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> >&, std::vector<f... |   646 |     0 | sampling_percent | %     |  4.000 |
+| |0>>> GOMP_parallel                                                                                                      |  1069 |     0 | sampling_percent | %     |  6.618 |
+| |0>>> std::ostream::write(char const*, long)                                                                             |    16 |     0 | sampling_percent | %     |  0.099 |
+| |0>>> std::basic_filebuf<char, std::char_traits<char> >::xsputn(char const*, long)                                       |    16 |     0 | sampling_percent | %     |  0.099 |
+| |0>>> std::__basic_file<char>::xsputn_2(char const*, long, char const*, long)                                            |    16 |     0 | sampling_percent | %     |  0.099 |
+| |0>>> diffuse(int, std::vector<float, std::allocator<float> >&, std::vector<float, std::allocator<float> > const&, fl... |    17 |     0 | sampling_percent | %     |  0.105 |
+| |0>>> std::basic_ofstream<char, std::char_traits<char> >::close()                                                        |     1 |     0 | sampling_percent | %     |  0.006 |
+| |0>>> std::basic_filebuf<char, std::char_traits<char> >::close()                                                         |     1 |     0 | sampling_percent | %     |  0.006 |
+| |0>>> std::__basic_file<char>::close()                                                                                   |     1 |     0 | sampling_percent | %     |  0.006 |
+| |0>>> _IO_fclose                                                                                                         |     1 |     0 | sampling_percent | %     |  0.006 |
+| |0>>> _IO_file_close_it                                                                                                  |     1 |     0 | sampling_percent | %     |  0.006 |
+| |1>>> pthread_condattr_setpshared                                                                                        |  2187 |     0 | sampling_percent | %     | 20.000 |
+| |1>>> std::pair<std::_Rb_tree_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> ... |  4374 |     0 | sampling_percent | %     | 40.000 |
+| |1>>> omp_fulfill_event                                                                                                  |  2187 |     0 | sampling_percent | %     | 20.000 |
+| |1>>> __sigaction                                                                                                        |  2187 |     0 | sampling_percent | %     | 20.000 |
+|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
